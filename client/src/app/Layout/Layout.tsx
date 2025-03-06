@@ -1,6 +1,6 @@
 // import { Footer } from '@/widgets';
 // import { Header } from '@/widgets';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router';
 // import { refreshTokensThunk } from "@/entities/user/api";
 import React from "react";
 // import { useAppDispatch } from "@/shared/hooks/reduxHooks";
