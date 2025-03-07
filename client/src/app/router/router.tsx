@@ -1,21 +1,33 @@
-import { Route, Routes } from "react-router";
+import { createBrowserRouter } from "react-router";
+import { CLIENT_ROUTES } from "@/shared/enums/clientRoutes";
+import { SignUpPage, SignInPage, TasksPage, MainPage, ErrorPage } from "@/pages";
+import { Layout } from "../Layout/Layout";
 
-const router = (
-  <Routes>
-    <Route index element={<Home />} />
-    <Route path="about" element={<About />} />
-
-    <Route element={<AuthLayout />}>
-      <Route path="login" element={<Login />} />
-      <Route path="register" element={<Register />} />
-    </Route>
-
-    <Route path="concerts">
-      <Route index element={<ConcertsHome />} />
-      <Route path=":city" element={<City />} />
-      <Route path="trending" element={<Trending />} />
-    </Route>
-  </Routes>
-);
-
-export default router;
+export const router = createBrowserRouter([
+  {
+    path: CLIENT_ROUTES.HOME,
+    element: <Layout />,
+    children: [
+      {
+        path: CLIENT_ROUTES.HOME,
+        element: <MainPage  />,
+      },
+      {
+        path: CLIENT_ROUTES.AUTHORIZATION,
+        element: <SignInPage  />,
+      },
+      {
+        path: CLIENT_ROUTES.REGISTRATION,
+        element: <SignUpPage />,
+      },
+      // {
+      //   path: CLIENT_ROUTES.TASKS,
+      //   element: <TasksPage  />,
+      // },
+      {
+        path: CLIENT_ROUTES.NOTFOUND,
+        element: <ErrorPage />,
+      },
+    ],
+  },
+]);

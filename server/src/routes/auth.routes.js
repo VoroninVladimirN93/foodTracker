@@ -1,7 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const UserController = require("../controllers/User.controller");
+const verifyRefreshToken = require("../middleware/verifyRefreshToken");
 
-router.post("/signup", UserController.createUser);
+router
+  .get('/refreshTokens', verifyRefreshToken, UserController.refreshTokens)
+  .post('/signUp', UserController.signUp)
+
+  .post('/signIn', UserController.signIn)
+
+  .get('/signOut', UserController.signOut);
 
 module.exports = router;

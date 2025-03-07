@@ -1,31 +1,21 @@
-// import { Footer } from '@/widgets';
-// import { Header } from '@/widgets';
-import { Outlet, useLocation } from 'react-router';
-// import { refreshTokensThunk } from "@/entities/user/api";
-import React from "react";
-// import { useAppDispatch } from "@/shared/hooks/reduxHooks";
+import { refreshTokensThunk } from "@/entities/user/api/userThunkApi";
+import { useAppDispatch } from "@/shared/hooks/reduxHooks";
+import { Footer, Navbar } from "@/widgets";
+import React, { useEffect } from "react";
+import { Outlet } from "react-router";
 
+export function Layout(): React.JSX.Element {
+  const dispatch = useAppDispatch();
 
-export default function Layout(): React.JSX.Element {
-  const location = useLocation();
-  console.log(location);
-  
-//   const dispatch = useAppDispatch();
-//   useEffect(() => {
-//     dispatch(refreshTokensThunk());
-//   }, [dispatch]);
+  useEffect(() => {
+    dispatch(refreshTokensThunk());
+  }, [dispatch]);
 
-  
-
-//   useEffect(() => {
-//     dispatch(clearPoints());
-//   }, [location.pathname]);
-  
   return (
     <>
-      {/* <Header /> */}
+      <Navbar />
       <Outlet />
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

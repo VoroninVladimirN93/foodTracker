@@ -1,1 +1,5 @@
-export { SignUpPage } from './SignUpPage/ui/SignUpPage';
+export { ErrorPage } from './ErrorPage'
+export { MainPage } from './MainPage'
+export { SignInPage } from './SignInPage'
+export { SignUpPage } from './SignUpPage'
+export { TasksPage } from './TaskPage'

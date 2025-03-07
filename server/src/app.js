@@ -3,6 +3,7 @@ const express = require("express");
 const serverConfig = require("./config/serverConfig");
 const indexRouter = require("./routes/index.routes");
 
+
 const app = express();
 
 serverConfig(app);
