@@ -10,11 +10,9 @@ class UserController {
   static async refreshTokens(req, res) {
     try {
       const { user } = res.locals;
-
       const { accessToken, refreshToken } = generateTokens({ user });
-
+      console.log(colors.bgGreen('Successfully generated new tokens'))
       res.status(200).cookie('refreshToken', refreshToken, cookiesConfig).json(
-        console.log(colors.bgGreen('Successfully generated new tokens')),
         formatResponse(200, 'Successfully generated new tokens', {
           user,
           accessToken,
